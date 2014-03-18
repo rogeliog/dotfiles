@@ -1,0 +1,7 @@
+alias be="bundle exec"
+alias g="git"
+alias h="cd ~/hack"
+alias rl="source ~/.zshrc"
+alias tmux="TERM=screen-256color-bce tmux"
+alias v="vim"
+
