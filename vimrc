@@ -12,6 +12,10 @@ filetype plugin indent on
 
 Bundle 'scrooloose/nerdtree'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""" Generic Conf
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Sets zsh as default shell
 " set shell=zsh\ -i
 " set shellcmdflag=-ci
