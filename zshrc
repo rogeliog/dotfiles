@@ -51,8 +51,6 @@ source ~/.bash_profile
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-export PATH="/opt/twitter/rvm/gems/ree-1.8.7-2012.02@twitter/bin:/opt/twitter/rvm/gems/ree-1.8.7-2012.02@global/bin:/opt/twitter/rvm/rubies/ree-1.8.7-2012.02/bin:/opt/twitter/rvm/bin:/Users/rhuerta/workspace/maven-tools/bin:/opt/twitter/bin:/opt/twitter/sbin:/usr/local/mysql/bin:/Users/rhuerta/bin:/Users/rhuerta/.twitools/src/twitter-utilities/sbt:/Users/rhuerta/.twitools/src/twitter-utilities/sbt11:/Users/rhuerta/.twitools/src/twitter-utilities/bin:/Users/rhuerta/workspace/maven-tools/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/twitter/nvm/v0.8.8/bin:/Users/rhuerta/workspace/maven-tools/bin:/opt/twitter/bin:/opt/twitter/sbin:/usr/local/mysql/bin:/Users/rhuerta/bin:/Users/rhuerta/.twitools/src/twitter-utilities/sbt:/Users/rhuerta/.twitools/src/twitter-utilities/sbt11:/Users/rhuerta/.twitools/src/twitter-utilities/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
