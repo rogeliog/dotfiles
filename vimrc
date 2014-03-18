@@ -10,7 +10,22 @@ call vundle#rc()
 
 filetype plugin indent on
 
+Bundle 'rking/ag.vim'
+Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-rails'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'tpope/vim-surround'
+Bundle 'bronson/vim-trailing-whitespace'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""" Generic Conf
