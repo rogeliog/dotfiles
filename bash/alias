@@ -1,0 +1,19 @@
+alias be="bundle exec"
+alias g="git"
+alias h="cd ~/hack"
+alias mvn='mvn -Pzinc'
+alias rl="source ~/.zshrc"
+alias team='printf "chunter, couch, jkoon, mcervera, tom, tstramer" | pbcopy'
+alias tmux="TERM=screen-256color-bce tmux"
+alias v="vim"
+
+alias s="bin/swoop2"
+alias t="cd ~/workspace/twitter"
+alias tjs="cd ~/workspace/twitter/macaw-swift/web-resources/js"
+alias twa="cd ~/workspace/twitter/macaw-swift/web-app"
+alias twr="cd ~/workspace/twitter/macaw-swift/web-resources"
+alias trc="MACAW_SWIFT=1 bin/testrc"
+alias u="bin/unity"
+alias tnls="macaw-swift/web-app/scripts/setup-ssh-tunnels.sh"
+
+alias ech="be rake echidna_suite -- -b 'Chrome' -t $@"

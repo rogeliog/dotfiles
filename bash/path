@@ -1,0 +1,2 @@
+export HOMEBREW_GITHUB_API_TOKEN=371172226681b83c53ae82dfe0c8e9f7ad3eeea1
+export CDNGOOSE_DIR=~/workspace/cdngoose/bin
