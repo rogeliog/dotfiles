@@ -26,6 +26,8 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'tpope/vim-surround'
 Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'juvenn/mustache'
+Bundle 'scrooloose/nerdcommenter'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""" Generic Conf
@@ -151,11 +153,7 @@ imap <Leader>v  <C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
 " MISC KEY MAPS
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>y "*y
-" Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 "
 imap <c-c> <esc>
@@ -164,6 +162,20 @@ function! MapCR()
   nnoremap <cr> :nohlsearch<cr>
 endfunction
 call MapCR()
+
+"""""""""""""""""""""""""""""" Splits """""""""""""""""""""""""""""""""""
+
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+set splitbelow
+set splitright
+
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 """""""""""""""""""""""""""""" Anti Arrows """""""""""""""""""""""""""""""""""
 noremap <Up> <Nop>
