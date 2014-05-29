@@ -1,2 +1,3 @@
 dir=~/.dotfiles/bash
+source $dir/path
 source $dir/alias

@@ -1,7 +1,18 @@
+vimInstance() {
+jobs | grep vim > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+  fg
+else
+  vim
+fi
+}
 alias be="bundle exec"
+alias f="find"
 alias g="git"
 alias h="cd ~/hack"
+alias notes="vim ~/.notes"
+alias today="cat ~/.notes/today"
+alias o="open"
 alias rl="source ~/.zshrc"
 alias tmux="TERM=screen-256color-bce tmux"
-alias v="vim"
-
+alias v=vimInstance
