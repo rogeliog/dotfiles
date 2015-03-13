@@ -1,10 +1,10 @@
-vimInstance() {
-jobs | grep vim > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-  fg
-else
-  vim
-fi
+#function run
+run() {
+    number=$1
+    shift
+    for i in `seq $number`; do
+      $@
+    done
 }
 alias be="bundle exec"
 alias f="find"
@@ -15,4 +15,5 @@ alias today="cat ~/.notes/today"
 alias o="open"
 alias rl="source ~/.zshrc"
 alias tmux="TERM=screen-256color-bce tmux"
-alias v=vimInstance
+
+alias fa="find . | ag"
