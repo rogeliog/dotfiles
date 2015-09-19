@@ -2,7 +2,6 @@
 """"""" Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle/
@@ -14,7 +13,6 @@ Bundle 'rking/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-endwise'
@@ -27,6 +25,11 @@ Bundle 'tpope/vim-surround'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'juvenn/mustache'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'hsanson/vim-android'
+Bundle 'vim-scripts/javacomplete'
+Bundle 'mxw/vim-jsx'
+Bundle 'pangloss/vim-javascript'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""" Generic Conf
@@ -288,3 +291,15 @@ endif
 
 set tagstack
 set tags=tags;
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""" Android
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:android_sdk_path = '~/android-sdk'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""" React and JSX
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jsx_ext_required = 0
