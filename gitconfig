@@ -50,13 +50,15 @@
     hp = "!source ~/.githelpers && show_git_head"
     r = !git l -30
     ra = !git r --all
+		rg = !git l -30 --graph
+		rag = !git r --all --graph
     l = "!source ~/.githelpers && pretty_git_log"
     la = !git l --all
 [heroku]
 	account = personal
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

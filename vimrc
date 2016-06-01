@@ -61,9 +61,6 @@ set showtabline=2
 " USER OPTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect('~/.vim/bundle/{}')
-
 " Enable highlighting for syntax
 syntax on
 " Enable file type detection.
