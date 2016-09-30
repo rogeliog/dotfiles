@@ -1,38 +1,39 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""" Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
+" set nocompatible              " be iMproved, required
+" filetype plugin indent on
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call plug#begin('~/.vim/plugged')
 
-filetype plugin indent on
+Plug 'tpope/vim-sensible'
+Plug 'flazz/vim-colorschemes'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'ervandew/supertab'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Lokaltog/vim-powerline'
+Plug 'tpope/vim-surround'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'juvenn/mustache'
+Plug 'scrooloose/nerdcommenter'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'terryma/vim-multiple-cursors'
 
-Bundle 'rking/ag.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'juvenn/mustache'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'hsanson/vim-android'
-Bundle 'vim-scripts/javacomplete'
-Bundle 'mxw/vim-jsx'
-Bundle 'pangloss/vim-javascript'
+call plug#end()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""" Generic Conf
+" Generic Conf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Sets zsh as default shell
@@ -69,30 +70,14 @@ syntax on
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
 
-if has("gui_running")
-  set guioptions=egmrt
-  set guifont:Monaco:h12
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-
-"""""""" History """
-nnoremap <F5> :GundoToggle<CR>
-
-if exists('+colorcolumn')
-  set colorcolumn=80
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
-
-"""""""""""""""""""""""""""""" Personal Stuff """""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map Leader to comma
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
 set mouse=a
 
 set clipboard=unnamed
-let g:ackprg = 'ag --nogroup --nocolor --column'
+
 
 """""""""""""""""""""""""""""" Insert Maps """""""""""""""""""""""""""""""""""
 " Line autocomplete
@@ -100,67 +85,44 @@ imap <c-l> <c-x><c-l>
 """""""""""""""""""""""""""""" Maps """"""""""""""""""""""""""""""""""""""""""
 map ! :!
 
-function! OpenScalaTestFile()
-  let file = expand('%%')
-  let test_file = substitute(file, "/main/", "/test/", "g")
-  let test_file = substitute(test_file, ".scala$", "Spec.scala", "g")
-  exec 'sp ' . test_file
-endfunction
-map <leader>. :call OpenScalaTestFile() <cr>
-
-function! ScalaTest()
-  let filename = expand('%:t')
-  let new_name = substitute(filename, ".scala", "", "g")
-  execute '!echo bundle exec rake ms:test['.new_name.'] > test-commands'
-endfunction
 """""""""""""""""""""""""""""" Leaders Maps """"""""""""""""""""""""""""""""""
 " Change to alternate file
 map <leader><leader> <c-^>
+
 " Create folders
 map <leader>f :!mkdir -p %%
 map <leader>F :!mkdir -p
+
 " Whitespace
 map <leader>dw :FixWhitespace <CR>
-map <leader>m :map ,t :w \\|:!
+
+".vimrc
 map <silent> <leader>ev :tabnew ~/.vimrc <CR>
 map <silent> <leader>sv :source ~/.vimrc <CR>
+
+" Autoindent
 map <leader>i gg=G``
 
+" Change tab size
 map <leader>ct2 :set tabstop=4 shiftwidth=2 softtabstop=2 <CR>
 map <leader>ct4 :set tabstop=4 shiftwidth=4 softtabstop=4 <CR>
 
+" Line Numbers
 map <leader>lr :set relativenumber <cr>
 map <leader>la :set number <cr>
 
-map <leader>p :CtrlPCurWD<cr>
-map <leader>pa :CtrlP<cr>
-map <leader>r :CtrlPMRUFiles<cr>
-
-
 " Toggle NERDTree
 map <leader>n :NERDTreeToggle<cr>
+map <leader>e :NERDTreeToggle %%<cr>
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
+
 
 """""""""""""""""""""""""""""" Extra File extentions that use ruby syntax """""
 au BufRead,BufNewFile *.rabl setf ruby
 
 """""""""""""""""""""""""""""" Pasting """"""""""""""""""""""""""""""""""""""""
-"<C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
+
 imap <Leader>v  <C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MISC KEY MAPS
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>y "*y
-
-" Can't be bothered to understand ESC vs <c-c> in insert mode
-"
-imap <c-c> <esc>
-" Clear the search buffer when hitting return
-function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
-endfunction
-call MapCR()
 
 """""""""""""""""""""""""""""" Splits """""""""""""""""""""""""""""""""""
 
@@ -173,9 +135,6 @@ nnoremap <c-l> <c-w>l
 set splitbelow
 set splitright
 
-nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
-
 """""""""""""""""""""""""""""" Anti Arrows """""""""""""""""""""""""""""""""""
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -187,12 +146,7 @@ set nobackup
 set noswapfile
 
 """"""""""""""""""""""""""""" Color """"""""""""""""""""""""""""""""""""""""""
-syntax enable
-set background=light
-let g:solarized_termcolors=256
-set t_Co=256
-
-colorscheme Tomorrow-Night-Eighties
+colorscheme monokai
 
 " Fold
 set foldmethod=indent
@@ -202,12 +156,11 @@ set foldlevelstart=20
 set relativenumber
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gary Barnhardt
+" Rename file inline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
-"map <leader>v :view %%
-
+" map <leader>e :edit %%
+map <leader>v :view %%
 
 function! RenameFile()
   let old_name = expand('%')
@@ -220,34 +173,11 @@ function! RenameFile()
 endfunction
 map <leader>ee :call RenameFile()<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SWITCH BETWEEN TEST AND PRODUCTION CODE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! OpenTestAlternate()
-  let new_file = AlternateForCurrentFile()
-  exec ':e ' . new_file
-endfunction
-function! AlternateForCurrentFile()
-  let current_file = expand("%")
-  let new_file = current_file
-  let in_spec = match(current_file, '^spec/') != -1
-  let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1
-  if going_to_spec
-    if in_app
-      let new_file = substitute(new_file, '^app/', '', '')
-    end
-    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
-    let new_file = 'spec/' . new_file
-  endif
-  return new_file
-endfunction
-"nnoremap <leader>. :callOpenTestAlternate()<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Indent if we're at the beginning of a line. Else, do completion.
 function! InsertTabWrapper()
   let col = col('.') - 1
   if !col || getline('.')[col - 1] !~ '\k'
@@ -260,43 +190,63 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""" Make Ctrlp Faster
+" FZF
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:fzf_layout = { 'down': '~40%' }
 
-" Ignore some folders and files for CtrlP indexing
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$\|target$\|bin$',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.class$'
-  \ }
+" In Neovim, you can set up fzf window using a Vim command
+"let g:fzf_layout = { 'window': 'enew' }
+"let g:fzf_layout = { 'window': '-tabnew' }
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""" Ctags
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set tagstack
-set tags=tags;
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""" Android
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:android_sdk_path = '~/android-sdk'
+" Mapping selecting mappings
+map <leader>r :History<CR>
+map <leader>b :Buffers<CR>
+map <leader>p :GFiles<CR>
+map <leader>l :Lines<CR>
+map <leader>a :Ag<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""" React and JSX
+" React and JSX
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jsx_ext_required = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_eslint_checkers =['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_java_checkers = ['']
+let g:syntastic_disabled_filetypes=['java']
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+augroup airline_config
+  autocmd!
+  let g:airline_enable_syntastic = 1
+augroup END
+

@@ -15,5 +15,6 @@ alias today="cat ~/.notes/today"
 alias o="open"
 alias rl="source ~/.zshrc"
 alias tmux="TERM=screen-256color-bce tmux"
+alias n="npm"
 
 alias fa="find . | ag"
