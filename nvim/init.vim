@@ -3,6 +3,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
+Plug 'chrisbra/Colorizer'
+Plug 'fatih/vim-go'
 Plug 'tpope/vim-sensible'
 Plug 'flazz/vim-colorschemes'
 Plug 'rking/ag.vim'
