@@ -15,7 +15,7 @@
 	untracked = cyan
 [user]
 	name = Rogelio Guzman
-    email = rhuerta@twitter.com
+	email = rogelioguzmanh@gmail.com
 [core]
 	excludesfile = /Users/rhuerta/.gitignore_global
 [color "diff"]
