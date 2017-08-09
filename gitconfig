@@ -38,6 +38,9 @@
     s = status
     sh = show
 
+    # Delete branch
+    bd = !node ~/dev/delete-branch
+
     # Fancy logging.
     #   h = head
     #   hp = head with patch
@@ -79,3 +82,5 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[credential]
+	helper = osxkeychain
