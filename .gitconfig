@@ -37,6 +37,9 @@
     gerrit = push gerrit HEAD:refs/for/master
     s = status
     sh = show
+		branch-name = "!git rev-parse --abbrev-ref HEAD"
+		pub = "!git push origin $(git branch-name)"
+		pubf = "!git push origin $(git branch-name) -f"
 
     # Delete branch
     bd = !node ~/dev/delete-branch
