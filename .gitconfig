@@ -28,12 +28,14 @@
 [alias]
     a = add
     amend = commit --amend
-    b = branch
+    quickamend = commit --amend -n --no-edit
+    b = !git --no-pager branch
     c = commit
     co = checkout
     d = !git dsf
     dh = !git dsf head
     ds = !git dsf --staged
+    dm = !git dsf `git merge-base master head`
     gerrit = push gerrit HEAD:refs/for/master
     s = status
     sh = show
