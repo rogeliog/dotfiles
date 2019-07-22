@@ -21,6 +21,10 @@ alias tmux="TERM=screen-256color-bce tmux"
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 
+# ------------------------------------------------------------------------------
+# Use FZF Git completion
+# ------------------------------------------------------------------------------
+source "$HOME/.fzf-git-completions.sh"
 
 # ------------------------------------------------------------------------------
 # Open a new PR for the current branch

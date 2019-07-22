@@ -1,5 +1,29 @@
 #!/bin/bash
 
+# =============================================================================
+# Custom git branch. Shows test/ branches separate
+# =============================================================================
+git_branch() {
+    # has_test_branches=$(git --no-pager branch | grep 'test/')
+    if [ -z "$1"]; then
+        # if [ -n "$has_test_branches" ]; then
+            echo "====== test branches ======"
+            git --no-pager branch | grep 'test/'
+            echo "======== branches ========="
+            git --no-pager branch | grep -v 'test/'
+        # else
+            # git --no-pager branch | grep -v 'test/'
+        # fi    
+    else
+        git branch $@
+    fi
+    
+}
+
+# =============================================================================
+# Custom Git log command
+# =============================================================================
+#
 # Log output:
 #
 # * 51c333e    (12 days)    <Gary Bernhardt>   add vim-eunuch
@@ -16,6 +40,7 @@
 # The log format uses } characters between each field, and `column` is later
 # used to split on them. A } in the commit subject or any other field will
 # break this.
+
 
 LOG_HASH="%C(always,yellow)%h%C(always,reset)"
 LOG_RELATIVE_TIME="%C(always,green)(%ar)%C(always,reset)"
